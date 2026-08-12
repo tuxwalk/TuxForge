@@ -16,8 +16,6 @@ The known-working baseline image is named:
 
     tuxforge-msm8916.img
 
-It was originally developed and tested as `boot-initramfs5.img`.
-
 ## Known-working kernel
 
 The kernel payload is stored at:
@@ -28,7 +26,7 @@ SHA256:
 
     4d2e637abc6baf17794f9376dda03a343f7414c46027224708ee89383f05045c
 
-This is byte-for-byte identical to the kernel extracted from the known-working
+This is identical to the kernel extracted from the known-working
 `tuxforge-msm8916.img`.
 
 ## Initramfs
@@ -37,22 +35,15 @@ The initramfs under:
 
     initramfs/
 
-was recovered directly from the known-working image.
-
 The golden `/init` mounts the Linux root filesystem from:
 
     /dev/mmcblk0p28
-
-The experimental Buffyboard graphical keyboard changes are NOT part of this
-golden initramfs.
 
 ## Kernel configuration
 
     config/kernel-golden.config
 
-is extracted directly from the known-working kernel.
-
-Important options include:
+Config changes include:
 
     CONFIG_DEVTMPFS=y
     CONFIG_DEVTMPFS_MOUNT=y
@@ -73,7 +64,7 @@ Development configuration is kept separately as:
 
 ## Android boot image parameters
 
-Known-working parameters:
+Parameters:
 
     base:           0x80000000
     kernel offset:  0x00008000
@@ -86,7 +77,7 @@ Known-working parameters:
 
 ## Status
 
-Known working:
+Working:
 
 - ARM32 kernel boot
 - Appended gt58wifi DTB
@@ -99,12 +90,11 @@ Known working:
 Experimental:
 
 - UINPUT
-- Laptop keyboard input
-- Buffyboard graphical keyboard
+- [Buffyboard graphical keyboard][https://wiki.postmarketos.org/wiki/Buffyboard]
 
 ## Goal
 
-The SM-T350 / gt58wifi is the first reference device for TuxForge.
+The SM-T350 (gt58wifi) is the first reference device for TuxForge.
 
-Additional Qualcomm devices and SoCs will be added as they are tested on
+Additional devices and SoCs will be added as they are tested on
 real hardware.
