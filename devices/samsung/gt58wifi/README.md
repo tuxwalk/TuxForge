@@ -1,7 +1,5 @@
 # TuxForge — Samsung Galaxy Tab A 8.0 (2015)
 
-Initial TuxForge reference device.
-
 ## Device
 
 - Model: Samsung SM-T350
@@ -34,10 +32,6 @@ This is identical to the kernel extracted from the known-working
 The initramfs under:
 
     initramfs/
-
-The golden `/init` mounts the Linux root filesystem from:
-
-    /dev/mmcblk0p28
 
 ## Kernel configuration
 
