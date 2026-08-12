@@ -1,0 +1,13 @@
+# Build outputs / binary artifacts
+artifacts/
+*.img
+*.dtb
+*.dtbo
+*.cpio
+*.cpio.gz
+*.o
+*.a
+
+# Build directories
+build/
+out/

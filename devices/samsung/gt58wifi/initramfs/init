@@ -1,0 +1,59 @@
+#!/bin/sh
+
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+busybox mount -t proc proc /proc
+busybox mount -t sysfs sysfs /sys
+busybox mount -t devtmpfs devtmpfs /dev
+
+busybox mkdir -p /dev/pts
+busybox mount -t devpts devpts /dev/pts
+
+busybox echo "=== starting init script ===" > /dev/tty0
+
+busybox mount -t configfs none /sys/kernel/config
+
+if [ -d /sys/kernel/config/usb_gadget ]; then
+    busybox mkdir -p /sys/kernel/config/usb_gadget/g1
+    cd /sys/kernel/config/usb_gadget/g1
+    busybox echo 0x18d1 > idVendor
+    busybox echo 0x4ee0 > idProduct
+    
+    busybox mkdir -p strings/0x409
+    busybox echo "1234567890" > strings/0x409/serialnumber
+    busybox echo "Android" > strings/0x409/manufacturer
+    busybox echo "Android Gadget" > strings/0x409/product
+    
+    busybox mkdir -p configs/c.1/strings/0x409
+    busybox echo "Conf 1" > configs/c.1/strings/0x409/configuration
+    busybox echo 500 > configs/c.1/MaxPower
+    
+    busybox mkdir -p functions/acm.usb0
+    busybox ln -s functions/acm.usb0 configs/c.1/
+    
+    busybox ls /sys/class/udc > UDC 2>&1
+    if [ $? -eq 0 ]; then
+        busybox echo "step13: UDC bound" > /dev/tty0
+    else
+        busybox echo "step13 FAILED: UDC bind" > /dev/tty0
+    fi
+else
+    busybox echo "configfs usb_gadget directory not found!" > /dev/tty0
+fi
+
+busybox echo "=== /proc/partitions ===" > /dev/tty0
+cat /proc/partitions > /dev/tty0
+
+busybox mkdir -p /mnt/root
+busybox mount -t ext4 /dev/mmcblk0p28 /mnt/root
+
+if [ -d /mnt/root/bin ] || [ -d /mnt/root/sbin ]; then
+    busybox echo "Rootfs mounted successfully!" > /dev/tty0
+    
+    busybox echo "0" > /proc/sys/kernel/printk
+    
+    exec busybox switch_root /mnt/root /sbin/init
+else
+    busybox echo "ERROR: Rootfs mount failed, dropping to emergency shell" > /dev/tty0
+    exec busybox sh </dev/tty0>/dev/tty0 2>&1
+fi
