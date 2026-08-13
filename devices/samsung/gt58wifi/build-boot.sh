@@ -33,8 +33,8 @@ mkbootimg \
     --pagesize 2048 \
     --header_version 0 \
     --cmdline "console=tty0" \
-    --output "$OUT/tuxforge-msm8916.img"
+    --output "$OUT/tuxforge-smt350-v0.1.0.img"
 
 echo
 echo "[TuxForge] Built:"
-ls -lh "$OUT/tuxforge-msm8916.img"
+ls -lh "$OUT/tuxforge-smt350-v0.1.0.img"
