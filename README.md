@@ -22,8 +22,8 @@ The goal is to make old hardware give a second life, turning them into Linux com
 ## Gallery
 
 <p align="center">
-  <img src="assets/photo1.jpg" width="48%" alt="TuxForge">
-  <img src="assets/photo2.jpg" width="48%" alt="TuxForge">
+  <img src="assets/gallery.jpg" width="48%" alt="TuxForge">
+  <img src="assets/gallery1.jpg" width="48%" alt="TuxForge">
 </p>
 
 ---
@@ -33,10 +33,11 @@ The goal is to make old hardware give a second life, turning them into Linux com
 Want to support its development? You can help
 fund hardware, development equipment, and future experiments.
 
-<a href="[YOUR_BUY_ME_A_COFFEE_LINK](https://buymeacoffee.com/tuxforge)">
-  <img src="assets/buy-me-a-coffee.png"
-       alt="Buy Me a Coffee"
-       width="200">
+<a href="https://www.buymeacoffee.com/tuxforge">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+       height="60"
+       width="217"
+       alt="Buy Me a Coffee">
 </a>
 
 Thank you for supporting TuxForge!
