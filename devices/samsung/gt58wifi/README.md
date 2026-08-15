@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+
 # TuxForge — Samsung Galaxy Tab A 8.0 (2015)
 
 ## Device
