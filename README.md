@@ -79,12 +79,6 @@ Firmware, binary blobs, drivers, source code, and other materials originating fr
 
 TuxForge does not claim ownership of third-party components.
 
-### Contributions
-
-Contributions are licensed under the license applicable to the component being modified. Contributors should preserve existing SPDX identifiers and copyright notices.
-
----
-
 ## License
 
 See [LICENSE](LICENSE) for licensing information.
