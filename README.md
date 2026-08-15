@@ -51,6 +51,38 @@ are welcome.
 
 Open an issue or submit a pull request and i will fix it as soon as I can
 
+## License
+
+TuxForge uses multiple open-source licenses depending on the component.
+
+### TuxForge Code — MPL-2.0
+
+Original TuxForge source code, device support code, and other project components are licensed under the **Mozilla Public License 2.0 (MPL-2.0)** unless otherwise stated.
+
+See [`LICENSE`](LICENSE) for the full MPL-2.0 license.
+
+### Scripts — MIT
+
+Original TuxForge build scripts, helper scripts, and utilities are licensed under the **MIT License** unless otherwise stated.
+
+See [`LICENSES/MIT.txt`](LICENSES/MIT.txt).
+
+### Linux Kernel and Upstream Code
+
+Code derived from the Linux kernel or other upstream projects remains under its original license.
+
+Existing copyright notices and SPDX license identifiers are preserved and take precedence over the general TuxForge licensing terms.
+
+### Firmware and Third-Party Components
+
+Firmware, binary blobs, drivers, source code, and other materials originating from third parties remain subject to their respective licenses and redistribution terms.
+
+TuxForge does not claim ownership of third-party components.
+
+### Contributions
+
+Contributions are licensed under the license applicable to the component being modified. Contributors should preserve existing SPDX identifiers and copyright notices.
+
 ---
 
 ## License
