@@ -40,7 +40,6 @@ Download the image and flash it
 
 It can be flashed with:
 
-```sh
 fastboot flash boot TuxForge-*device*-kernel.img
 ```
 
