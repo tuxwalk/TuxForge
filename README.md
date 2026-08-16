@@ -17,7 +17,7 @@
 **TuxForge** is an open source project focused on Linux, embedded systems,
 low level development, and experimenting with hardware.
 
-The goal is to make old hardware give a second life, turning them into Linux computers
+The goal is to make old hardware give a second life, turning them into Linux computers.
 
 ---
 
@@ -43,6 +43,14 @@ fund hardware, development equipment, and future experiments.
 </a>
 
 Thank you for supporting TuxForge!
+
+---
+
+## lk2nd
+
+lk2nd is no longer supported by TuxForge.
+
+References to lk2nd in older documentation are retained for historical purposes only.
 
 ---
 
