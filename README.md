@@ -36,10 +36,8 @@ Follow the root filesystem installation instructions before continuing.
 ### 2. Install the TuxForge kernel
 
 Download the image and flash it
+
 ```
-
-It can be flashed with:
-
 fastboot flash boot TuxForge-*device*-kernel.img
 ```
 
