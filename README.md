@@ -21,6 +21,81 @@ The goal is to make old hardware give a second life, turning them into Linux com
 
 ---
 
+## Installing with fastboot
+
+TuxForge uses [TuxBerry](https://github.com/tuxwalk/TuxBerry) as the supported second-stage bootloader.
+
+TuxBerry provides the boot menu and loads the TuxForge Linux kernel on supported devices.
+
+### Installation
+
+Boot into fastboot mode, open a terminal, and proceed with the following commands.
+
+## 1. Install the TuxForge root filesystem
+
+Download and extract the TuxForge root filesystem for your device. Recommended with [TWRP](https://twrp.me)
+
+The root filesystem must be installed to the Linux/root partition used by the TuxForge kernel before attempting to boot Linux.
+
+Follow the device-specific root filesystem installation instructions before continuing.
+
+### 2. Install the TuxForge kernel
+
+Download the kernel image for your device.
+
+First, test the kernel without flashing it:
+
+```sh
+fastboot boot TuxForge-*device*-kernel.img
+```
+
+If the kernel boots correctly, it can be flashed with:
+
+```sh
+fastboot flash boot TuxForge-*device*-kernel.img
+```
+
+### 3. Install TuxBerry
+
+TuxBerry is the second-stage bootloader used by TuxForge.
+
+First, test TuxBerry without flashing it:
+
+```sh
+fastboot boot TuxBerry-v1.0-*device*.img
+```
+
+If TuxBerry boots correctly, flash it:
+
+```sh
+fastboot flash boot TuxBerry-v1.0-*device*.img
+```
+
+Then reboot:
+
+```sh
+fastboot reboot
+```
+
+### 4. Boot TuxForge
+
+TuxBerry will start and display its boot menu.
+
+Controls:
+
+- **Volume Up** — move through the menu
+- **Home** — select
+
+Select:
+
+```text
+BOOT LINUX
+```
+
+TuxBerry will load the TuxForge Linux kernel and start Linux.
+
+See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloader and device-specific information.
+
 ## Gallery
 
 <p align="center">
