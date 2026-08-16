@@ -35,15 +35,10 @@ Follow the root filesystem installation instructions before continuing.
 
 ### 2. Install the TuxForge kernel
 
-Download the kernel image for your device.
-
-First, test the kernel without flashing it:
-
-```sh
-fastboot boot TuxForge-*device*-kernel.img
+Download the image and flash it
 ```
 
-If the kernel boots correctly, it can be flashed with:
+It can be flashed with:
 
 ```sh
 fastboot flash boot TuxForge-*device*-kernel.img
