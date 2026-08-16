@@ -88,7 +88,7 @@ BOOT LINUX
 
 TuxBerry will load the TuxForge Linux kernel and start Linux.
 
-See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloader and device-specific information.
+See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloader and device specific information.
 
 ## Gallery
 
