@@ -130,7 +130,7 @@ lk2nd is no longer supported by TuxForge.
 Contributions, testing, ideas, bug reports, and documentation improvements
 are welcome.
 
-Open an issue or submit a pull request and i will fix it as soon as I can
+Open an issue or submit a pull request and I will help you with whatevers bothering you.
 
 ## License
 
