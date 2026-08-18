@@ -93,7 +93,7 @@ See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloade
 
 ## Devices that are currently supported or under development:
 
--- Novatel Mifi 6620L (currently under development, has an alpha version of v0.2, although released source code, users still need to get their own stock recovery image)
+-- Novatel Mifi 6620L (Released, but still in development, doesnt have a proper initramfs/init config yet)
 
 
 -- Redmi Note 5/5 Pro, whyred (currently under development locally)
