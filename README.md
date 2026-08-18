@@ -102,6 +102,8 @@ See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloade
 
 -- Samsung Galaxy Tab A 8.0, gt58wifi (2015) (Supported)
 
+P.S, all of these devices use ADB interface
+
 ## Support TuxForge
 
 Want to support its development? You can help
