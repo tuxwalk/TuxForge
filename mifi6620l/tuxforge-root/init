@@ -1,0 +1,61 @@
+#!/bin/sh
+
+# TuxForge 0.7 first-stage init
+# Runs as PID 1 before the Novatel recovery init.
+
+mkdir -p /proc /sys
+
+[ -r /proc/mounts ] ||
+    mount -t proc proc /proc 2>/dev/null || true
+
+[ -r /sys/kernel ] ||
+    mount -t sysfs sysfs /sys 2>/dev/null || true
+
+{
+    echo "=== TUXFORGE 0.7 EARLY BOOT ==="
+    echo "PID=$$"
+
+    echo
+    echo "=== CMDLINE ==="
+    cat /proc/cmdline 2>/dev/null || echo "NO /proc/cmdline"
+
+    echo
+    echo "=== ROOT ==="
+    mount 2>/dev/null || true
+
+    echo
+    echo "=== DEV ==="
+    ls -l /dev 2>/dev/null | head -n 100
+
+    echo
+    echo "=== FRAMEBUFFER DEVICE ==="
+    ls -l /dev/fb0 2>/dev/null || echo "NO /dev/fb0"
+
+    echo
+    echo "=== FRAMEBUFFER SYSFS ==="
+    ls -l /sys/class/graphics 2>/dev/null || echo "NO graphics class"
+    cat /sys/class/graphics/fb0/dev 2>/dev/null || true
+
+    echo
+    echo "=== INPUT DEVICES ==="
+    cat /proc/bus/input/devices 2>/dev/null || echo "NO input device list"
+
+    echo
+    echo "=== INPUT SYSFS ==="
+    ls -l /sys/class/input 2>/dev/null || echo "NO input class"
+
+    echo
+    echo "=== MTD ==="
+    cat /proc/mtd 2>/dev/null || echo "NO /proc/mtd"
+
+    echo
+    echo "=== NETWORK ==="
+    ls -l /sys/class/net 2>/dev/null || true
+
+} > /tuxforge-early-report 2>&1
+
+echo "TuxForge 0.7 early-init" > /tuxforge-early
+echo "$$" > /tuxforge-early-pid
+
+# Preserve the known-good stock recovery path.
+exec /sbin/init

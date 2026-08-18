@@ -1,0 +1,104 @@
+#!/bin/sh
+
+# TuxForge 0.9.1 first-stage
+# Runs as PID 1 before Novatel init.
+#
+# 0.9.1 keeps tuxui alive across the handoff to /sbin/init.
+
+mkdir -p /proc /sys /dev/input
+
+[ -r /proc/mounts ] ||
+    mount -t proc proc /proc 2>/dev/null || true
+
+[ -r /sys/kernel ] ||
+    mount -t sysfs sysfs /sys 2>/dev/null || true
+
+
+make_input_node()
+{
+    name="$1"
+    dev="$(cat "/sys/class/input/$name/dev" 2>/dev/null)" || return 1
+
+    major="${dev%:*}"
+    minor="${dev#*:}"
+
+    if [ ! -c "/dev/input/$name" ]; then
+        mknod "/dev/input/$name" c "$major" "$minor" || return 1
+    fi
+
+    chmod 600 "/dev/input/$name" 2>/dev/null || true
+    return 0
+}
+
+
+echo "TuxForge 0.9.1 early-init" > /tuxforge-early
+echo "$$" > /tuxforge-early-pid
+
+{
+    echo "=== TUXFORGE 0.9.1 EARLY BOOT ==="
+    echo "PID=$$"
+
+    echo
+    echo "=== FRAMEBUFFER ==="
+    ls -l /dev/fb0 2>/dev/null || true
+
+    echo
+    echo "=== INPUT ==="
+
+    if make_input_node event0; then
+        echo "event0 OK"
+    else
+        echo "event0 FAIL"
+    fi
+
+    if make_input_node event1; then
+        echo "event1 OK"
+    else
+        echo "event1 FAIL"
+    fi
+
+    ls -l /dev/input 2>/dev/null || true
+
+} > /tuxforge-early-report 2>&1
+
+
+#
+# TuxForge status LED
+#
+if [ -e /sys/class/leds/blue_led/brightness ]; then
+    echo none > /sys/class/leds/blue_led/trigger 2>/dev/null || true
+    echo 255 > /sys/class/leds/blue_led/brightness 2>/dev/null || true
+fi
+
+
+#
+# Start TuxForge UI while TuxForge is still PID 1.
+#
+echo "starting" > /tuxforge-early-ui-status
+
+/opt/tuxforge/tuxui \
+    </dev/null \
+    >/tuxforge-early-ui.log 2>&1 &
+
+UI_PID=$!
+
+echo "$UI_PID" > /tuxforge-early-ui-pid
+
+#
+# Just prove the process survived startup.
+# Unlike 0.8, DO NOT kill it.
+#
+sleep 1
+
+if kill -0 "$UI_PID" 2>/dev/null; then
+    echo "ready" > /tuxforge-early-ui-status
+else
+    echo "failed" > /tuxforge-early-ui-status
+fi
+
+
+#
+# Replace TuxForge PID1 shell with Novatel init.
+# The tuxui child remains alive.
+#
+exec /sbin/init

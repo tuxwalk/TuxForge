@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# TuxForge 0.8 early boot
+# Runs as PID 1 before Novatel init.
+
+mkdir -p /proc /sys /dev/input
+
+[ -r /proc/mounts ] ||
+    mount -t proc proc /proc 2>/dev/null || true
+
+[ -r /sys/kernel ] ||
+    mount -t sysfs sysfs /sys 2>/dev/null || true
+
+
+make_input_node()
+{
+    name="$1"
+    dev="$(cat "/sys/class/input/$name/dev" 2>/dev/null)" || return 1
+
+    major="${dev%:*}"
+    minor="${dev#*:}"
+
+    if [ ! -c "/dev/input/$name" ]; then
+        mknod "/dev/input/$name" c "$major" "$minor" || return 1
+    fi
+
+    chmod 600 "/dev/input/$name" 2>/dev/null || true
+}
+
+
+echo "TuxForge 0.8 early-init" > /tuxforge-early
+echo "$$" > /tuxforge-early-pid
+
+{
+    echo "=== TUXFORGE 0.8 EARLY UI ==="
+    echo "PID=$$"
+
+    echo
+    echo "=== FB ==="
+    ls -l /dev/fb0 2>/dev/null
+
+    echo
+    echo "=== CREATE INPUT ==="
+
+    if make_input_node event0; then
+        echo "event0 OK"
+    else
+        echo "event0 FAIL"
+    fi
+
+    if make_input_node event1; then
+        echo "event1 OK"
+    else
+        echo "event1 FAIL"
+    fi
+
+    echo
+    ls -l /dev/input
+
+} > /tuxforge-early-report 2>&1
+
+
+echo "starting" > /tuxforge-early-ui-status
+
+/opt/tuxforge/tuxui \
+    > /tuxforge-early-ui.log 2>&1 &
+
+UI_PID=$!
+echo "$UI_PID" > /tuxforge-early-ui-pid
+
+sleep 4
+
+if kill -0 "$UI_PID" 2>/dev/null; then
+    echo "ready" > /tuxforge-early-ui-status
+
+    kill "$UI_PID" 2>/dev/null || true
+    wait "$UI_PID" 2>/dev/null || true
+
+    echo "passed" > /tuxforge-early-ui-status
+else
+    echo "failed" > /tuxforge-early-ui-status
+fi
+
+exec /sbin/init

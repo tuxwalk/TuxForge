@@ -40,3 +40,19 @@ artifacts/
 # Build directories
 build/
 out/
+
+# MiFi 6620L local/generated artifacts
+mifi6620l/build/
+mifi6620l/releases/
+mifi6620l/dt/
+mifi6620l/fb/
+mifi6620l/kernel/
+mifi6620l/recovery/
+
+# Generated ARM executables
+mifi6620l/tuxforge-root/opt/tuxforge/tuxui
+mifi6620l/tuxforge-root/opt/tuxforge/tuxreboot-bootloader
+
+# Development leftovers
+mifi6620l/tools/*.bak
+mifi6620l/tools/tuxui-32bit-before-aa.c
