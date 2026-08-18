@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 .syntax unified
 .arm
 .global _start
