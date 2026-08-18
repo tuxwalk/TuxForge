@@ -1,0 +1,27 @@
+# Novatel proprietary firmware / dumps
+mifi6620l/stock/
+mifi6620l/recovery/kernel.bin
+mifi6620l/recovery/stock.config
+
+# Generated recovery images
+mifi6620l/releases/*.img
+
+# Extracted/intermediate rootfs
+mifi6620l/recovery/*.cpio
+mifi6620l/recovery/*.cpio.gz
+mifi6620l/recovery/tuxforge-kernel.bin
+
+# Temporary framebuffer captures
+mifi6620l/fb/mifi-logo.raw
+mifi6620l/fb/channel-test.raw
+mifi6620l/fb/channel-test.ppm
+mifi6620l/fb/rgb-test.raw
+
+# Python
+__pycache__/
+*.pyc
+
+# Misc
+*.o
+*.tmp
+.DS_Store
