@@ -25,3 +25,18 @@ __pycache__/
 *.o
 *.tmp
 .DS_Store
+
+# Rules preserved from existing repository
+# SPDX-License-Identifier: MPL-2.0
+# Build outputs / binary artifacts
+artifacts/
+*.img
+*.dtb
+*.dtbo
+*.cpio
+*.cpio.gz
+*.a
+
+# Build directories
+build/
+out/
