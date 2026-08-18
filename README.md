@@ -106,7 +106,7 @@ P.S, all of these devices use ADB interface
 ## Support TuxForge
 
 Want to support its development? You can help
-fund hardware, development equipment, and future experiments.
+fund hardware and development
 
 <a href="https://www.buymeacoffee.com/tuxforge">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
