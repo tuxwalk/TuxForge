@@ -27,8 +27,7 @@ Boot into fastboot mode, open a terminal, and proceed with the following command
 
 ## 1. Install the TuxForge root filesystem
 
-Download and extract the TuxForge root filesystem for your device. Recommended with [TWRP](https://twrp.me) or pushing it with ADB (if its an archive file e.g. tar.xz)
-and extract it inside the device
+Download and extract the TuxForge root filesystem for your device. Recommended with [TWRP](https://twrp.me) or pushing it with ADB and extract the archive file
 
 The root filesystem must be installed to the Linux/root partition used by the TuxForge kernel before attempting to boot Linux.
 
@@ -76,7 +75,7 @@ Controls:
 Select:
 
 ```text
-BOOT LINUX
+BOOT LINUX or BOOT
 ```
 
 TuxBerry will load the TuxForge Linux kernel and start Linux.
@@ -94,11 +93,9 @@ See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloade
 
 ## Devices that are currently supported or under development:
 
--- Novatel Mifi 6620L (Released, but still in development, doesnt have a proper initramfs/init config yet)
-
+-- Novatel Mifi 6620L (Supported, does not feature TuxBerry)
 
 -- Redmi Note 5/5 Pro, whyred (currently under development locally)
-
 
 -- Samsung Galaxy Tab A 8.0, gt58wifi (2015) (Supported)
 
@@ -123,8 +120,6 @@ Thank you for supporting TuxForge!
 ## lk2nd
 
 lk2nd is no longer supported by TuxForge.
-
-References to lk2nd in older documentation are retained for historical purposes only.
 
 ---
 
