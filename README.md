@@ -1,47 +1,155 @@
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+
 # TuxForge
 
-TuxForge is an experimental recovery environment for the Novatel MiFi 6620L.
+<p align="center">
+  <img src="assets/tuxforge.png" width="500" alt="TuxForge">
+</p>
 
-## TuxForge 0.2
+<p align="center">
+  Open-source Linux development.
+</p>
 
-Target:
+---
 
-- Novatel MiFi 6620L
-- Qualcomm MDM9625 / MSM9625 Bengal
-- ST7775 220x176 LCD
+## About
 
-Current features:
+**TuxForge** is an open source project focused on Linux, embedded systems,
+low level development, and experimenting with hardware.
 
-- Boots from the stock Novatel recovery kernel
-- TuxForge-modified embedded recovery userspace
-- ADB w/root
-- Dropbear SSH
-- Stock firmware updater disabled
-- Interrupted-upgrade path disabled
-- 220x176 LCD framebuffer support
-- 18-bpp, 660-byte stride framebuffer
-- Novatel private LCD update ioctl `0x9999`
-- Automatic splash output
-- Reproducible recovery image builder
+The goal is to make old hardware give a second life, turning them into Linux computers.
 
-## Building
+---
 
-A stock recovery image dumped from your own MiFi is required.
+### Installation
 
-Expected path:
+Boot into fastboot mode, open a terminal, and proceed with the following commands.
 
-    mifi6620l/stock/recovery.img
+## 1. Install the TuxForge root filesystem
 
-Build with:
+Download and extract the TuxForge root filesystem for your device. Recommended with [TWRP](https://twrp.me)
 
-    cd mifi6620l
-    python3 tools/build-recovery.py
+The root filesystem must be installed to the Linux/root partition used by the TuxForge kernel before attempting to boot Linux.
 
-The generated image is written to:
+Follow the root filesystem installation instructions before continuing.
 
-    mifi6620l/releases/tuxforge-0.2-mifi6620l.img
+### 2. Install the TuxForge kernel
 
-## Warning
+Download the image and flash it
 
-TuxForge is experimental low-level software. Prefer temporary booting before
-writing anything to NAND flash.
+```
+fastboot flash boot TuxForge-*device*-kernel.img
+```
+
+### 3. Install TuxBerry
+
+TuxBerry is the second-stage bootloader used by TuxForge.
+
+First, test TuxBerry without flashing it:
+
+```sh
+fastboot boot TuxBerry-v1.0-*device*.img
+```
+
+If TuxBerry boots correctly, flash it:
+
+```sh
+fastboot flash boot TuxBerry-v1.0-*device*.img
+```
+
+Then reboot:
+
+```sh
+fastboot reboot
+```
+
+### 4. Boot TuxForge
+
+TuxBerry will start and display its boot menu.
+
+Controls:
+
+- **Volume Up** — move through the menu
+- **Home** — select
+
+Select:
+
+```text
+BOOT LINUX
+```
+
+TuxBerry will load the TuxForge Linux kernel and start Linux.
+
+See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloader and device specific information.
+
+## Gallery
+
+<p align="center">
+  <img src="assets/gallery.jpg" width="48%" alt="TuxForge">
+  <img src="assets/gallery1.jpg" width="48%" alt="TuxForge">
+</p>
+
+---
+
+## Support TuxForge
+
+Want to support its development? You can help
+fund hardware, development equipment, and future experiments.
+
+<a href="https://www.buymeacoffee.com/tuxforge">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+       height="60"
+       width="217"
+       alt="Buy Me a Coffee">
+</a>
+
+Thank you for supporting TuxForge!
+
+---
+
+## lk2nd
+
+lk2nd is no longer supported by TuxForge.
+
+References to lk2nd in older documentation are retained for historical purposes only.
+
+---
+
+## Contributing
+
+Contributions, testing, ideas, bug reports, and documentation improvements
+are welcome.
+
+Open an issue or submit a pull request and i will fix it as soon as I can
+
+## License
+
+TuxForge uses multiple open-source licenses depending on the component.
+
+### TuxForge Code — MPL-2.0
+
+Original TuxForge source code, device support code, and other project components are licensed under the **Mozilla Public License 2.0 (MPL-2.0)** unless otherwise stated.
+
+See [`LICENSE`](LICENSE) for the full MPL-2.0 license.
+
+### Scripts — MIT
+
+Original TuxForge build scripts, helper scripts, and utilities are licensed under the **MIT License** unless otherwise stated.
+
+See [`LICENSES/MIT.txt`](LICENSES/MIT.txt).
+
+### Linux Kernel and Upstream Code
+
+Code derived from the Linux kernel or other upstream projects remains under its original license.
+
+Existing copyright notices and SPDX license identifiers are preserved and take precedence over the general TuxForge licensing terms.
+
+### Firmware and Third-Party Components
+
+Firmware, binary blobs, drivers, source code, and other materials originating from third parties remain subject to their respective licenses and redistribution terms.
+
+TuxForge does not claim ownership of third-party components.
+
+## License
+
+See [LICENSE](LICENSE) for licensing information.
