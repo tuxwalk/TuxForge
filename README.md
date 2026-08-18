@@ -21,10 +21,10 @@ The goal is to make old hardware give a second life, turning them into Linux com
 
 ---
 
+
 ### Installation
 
 Boot into fastboot mode, open a terminal, and proceed with the following commands.
-
 ## 1. Install the TuxForge root filesystem
 
 Download and extract the TuxForge root filesystem for your device. Recommended with [TWRP](https://twrp.me) or pushing it with ADB and extract the archive file
@@ -102,6 +102,9 @@ See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloade
 -- Samsung Galaxy Tab A 8.0, gt58wifi (2015) (Supported)
 
 P.S, all of these devices use ADB interface
+
+I also personally recommend checking each devices documentation on TuxForge and how to install them, because some devices are very specific
+
 
 ## Support TuxForge
 
