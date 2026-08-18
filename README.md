@@ -94,7 +94,11 @@ See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloade
 ## Devices that are currently supported or under development:
 
 -- Novatel Mifi 6620L (currently under development, has an alpha version of v0.2, although released users still need to get their own stock recovery image)
+
+
 -- Redmi Note 5/5 Pro, whyred (currently under development locally)
+
+
 -- Samsung Galaxy Tab A 8.0, gt58wifi (2015) (Supported)
 
 ## Support TuxForge
