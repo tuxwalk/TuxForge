@@ -33,6 +33,8 @@ The root filesystem must be installed to the Linux/root partition used by the Tu
 
 Follow the root filesystem installation instructions before continuing.
 
+Some devices wouldnt need TuxBerry check the "Devices that are currently supported or under development" section
+
 ### 2. Install the TuxForge kernel
 
 Download the image and flash it
