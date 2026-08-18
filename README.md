@@ -27,7 +27,8 @@ Boot into fastboot mode, open a terminal, and proceed with the following command
 
 ## 1. Install the TuxForge root filesystem
 
-Download and extract the TuxForge root filesystem for your device. Recommended with [TWRP](https://twrp.me)
+Download and extract the TuxForge root filesystem for your device. Recommended with [TWRP](https://twrp.me) or pushing it with ADB (if its an archive file e.g. tar.xz)
+and extract it inside the device
 
 The root filesystem must be installed to the Linux/root partition used by the TuxForge kernel before attempting to boot Linux.
 
