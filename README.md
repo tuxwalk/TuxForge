@@ -93,7 +93,7 @@ See the [TuxBerry repository](https://github.com/tuxwalk/TuxBerry) for bootloade
 
 ## Devices that are currently supported or under development:
 
--- Novatel Mifi 6620L (Supported, does not feature TuxBerry)
+-- Novatel Mifi 6620L (Supported, does not need second stage bring up like TuxBerry, flash it in the boot partition)
 
 -- Redmi Note 5/5 Pro, whyred (currently under development locally)
 
